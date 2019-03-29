@@ -23,15 +23,9 @@ function lastOperation(op) {
 	result = operate(op, +op1, +displayValue)
 	display.textContent = result;
 	op1 = result
-	op2 = undefined;
-	operator = undefined;
+	op2 = operator = undefined;
 }
-function operation(op) {
-	result = operate(operator, +op1, +op2)
-	display.textContent = result;
-	op1 = result
-	op2 = undefined;	
-}
+
 function operationProcess(op, a, b) {
 
 }
@@ -41,7 +35,6 @@ btnAdd.addEventListener('click', () => {
 	if (operator) op2 = displayValue;
 	if (op1 === undefined && !operator) op1 = displayValue;
 	if (!operator) operator = add;
-	// if (op1 && op2) operator(operator)
 	displayValue = "";	 
 })
 
@@ -76,11 +69,7 @@ btnDivd.addEventListener('click', () => {
 const btnEqual = document.querySelector('.equal');
 btnEqual.addEventListener('click', () => {
 	if (op2 === undefined) op2 = displayValue;
-	result = operate(operator, +op1, +op2);
-	display.textContent = result;
-	op1 = result;
-	op2 = operator = undefined;
-	displayValue = "";
+	lastOperation(operator);
 })
 
 const btnClear = document.querySelector('.clear');
