@@ -5,7 +5,7 @@ buttons.forEach(button => {
 	button.addEventListener('click', () => {
 		button.classList.add('clicked');
 	})
-	button.addEventListener('transitionend', (removeTransition))
+	button.addEventListener('transitionend', removeTransition)
 })
 
 function removeTransition() {
@@ -30,6 +30,17 @@ const number = numbers.forEach((number, i) => {
 		}
 	});
 });
+const dot = document.querySelector('.dot');
+dot.addEventListener('click', () => {
+	if (displayValue.includes(".")) return; 
+	display.textContent = displayValue += ".";
+})
+
+const del = document.querySelector('.delete');
+del.addEventListener('click' , () => {
+	 display.textContent = displayValue = displayValue.substring(0, displayValue.length-1);
+})
+
 
 // If operation includes more than two steps,  
 // operate on the last two operands and return
@@ -37,17 +48,16 @@ const number = numbers.forEach((number, i) => {
 // otherwise computes two operands
 function lastOperation(op) {
 	if (op === divide && displayValue == 0) {
-		return display.textContent = warning;
+		return display.textContent = warning
 	}
 	result = operate(op, +op1, +displayValue)
 	display.textContent = result;
 	op1 = result
-	op2 = undefined;
+	op2 = operator = undefined;
 }
 
 // 
 function operationProcess(op, newOp) {
-
 	if (op) lastOperation(op);
 	if (op) op2 = displayValue;
 	if (op1 === undefined && !op) op1 = displayValue;
