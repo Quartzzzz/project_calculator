@@ -39,9 +39,9 @@ const btnAdd = document.querySelector('.add');
 btnAdd.addEventListener('click', () => {
 	if (operator) lastOperation(operator);
 	if (operator) op2 = displayValue;
-	if (op1 && !operator) op1 = displayValue;
+	if (op1 === undefined && !operator) op1 = displayValue;
 	if (!operator) operator = add;
-	if (op1 && op2) operator(operator)
+	// if (op1 && op2) operator(operator)
 	displayValue = "";	 
 })
 
@@ -52,7 +52,6 @@ btnSub.addEventListener('click', () => {
 	if (operator) op2 = displayValue;
 	if (op1 === undefined && !operator) op1 = displayValue;
 	if (!operator) operator = substract;
-	if (op1 && op2) operator(operator)
 	displayValue = "";	 
 })
 
@@ -62,7 +61,6 @@ btnMult.addEventListener('click', () => {
 	if (operator) op2 = displayValue;
 	if (op1 === undefined && !operator) op1 = displayValue;
 	if (!operator) operator = multiply;
-	if (op1 && op2) operator(operator)
 	displayValue = "";	
 })
 
@@ -72,7 +70,6 @@ btnDivd.addEventListener('click', () => {
 	if (operator) op2 = displayValue;
 	if (op1 === undefined && !operator) op1 = displayValue;
 	if (!operator) operator = divide;
-	if (op1 && op2) operator(operator)
 	displayValue = "";	
 }) 
 
