@@ -19,16 +19,19 @@ const number = numbers.forEach((number, i) => {
 	});
 });
 
-
+function lastOperation(op) {
+	result = operate(op, +op1, +displayValue)
+	display.textContent = result;
+	op1 = result
+	op2 = undefined;
+	operator = undefined;
+}
+function operationProcess(op, a, b) {
+	
+}
 const btnAdd = document.querySelector('.add');
 btnAdd.addEventListener('click', () => {
-	if (operator) {
-		result = operate(operator, +op1, +displayValue)
-		display.textContent = result;
-		op1 = result
-		op2 = undefined;
-		operator = undefined;
-	}
+	if (operator) lastOperation(operator);
 	if (operator !== undefined) op2 = displayValue;
 	if (op1 === undefined && operator === undefined) op1 = displayValue;
 	if (operator === undefined) operator = add;
@@ -44,13 +47,7 @@ btnAdd.addEventListener('click', () => {
 
 const btnSub = document.querySelector('.sub');
 btnSub.addEventListener('click', () => {
-	if (operator) {
-		result = operate(operator, +op1, +displayValue)
-		display.textContent = result;
-		op1 = result
-		op2 = undefined;
-		operator = undefined;
-	}
+	if (operator) lastOperation(operator);
 	if (operator !== undefined) op2 = displayValue;
 	if (op1 === undefined && operator === undefined) op1 = displayValue;
 	if (operator === undefined) operator = substract;
@@ -84,8 +81,8 @@ function reset() {
 }
 
 // Take a operation function and two numbers
-function operate(operator, a, b) {
- return operator(a, b);
+function operate(op, a, b) {
+ return op(a, b);
 }
 // Basic operations
 function add(a, b) {
