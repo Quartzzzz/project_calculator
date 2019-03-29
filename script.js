@@ -6,7 +6,8 @@ let displayValue = "";
 
 let op1;
 let op2;
-let operator;let result; 
+let operator;
+let result; 
 
 const numbers = document.querySelectorAll('.number');
 const number = numbers.forEach((number, i) => {
@@ -21,9 +22,38 @@ const number = numbers.forEach((number, i) => {
 
 const btnAdd = document.querySelector('.add');
 btnAdd.addEventListener('click', () => {
+	if (operator) {
+		result = operate(operator, +op1, +displayValue)
+		display.textContent = result;
+		op1 = result
+		op2 = undefined;
+		operator = undefined;
+	}
 	if (operator !== undefined) op2 = displayValue;
 	if (op1 === undefined && operator === undefined) op1 = displayValue;
 	if (operator === undefined) operator = add;
+	if (op1 !== undefined && op2 !== undefined) {
+		result = operate(operator, +op1, +op2)
+		display.textContent = result;
+		op1 = result
+		op2 = undefined;
+	}
+	displayValue = "";	 
+})
+
+
+const btnSub = document.querySelector('.sub');
+btnSub.addEventListener('click', () => {
+	if (operator) {
+		result = operate(operator, +op1, +displayValue)
+		display.textContent = result;
+		op1 = result
+		op2 = undefined;
+		operator = undefined;
+	}
+	if (operator !== undefined) op2 = displayValue;
+	if (op1 === undefined && operator === undefined) op1 = displayValue;
+	if (operator === undefined) operator = substract;
 	if (op1 !== undefined && op2 !== undefined) {
 		result = operate(operator, +op1, +op2)
 		display.textContent = result;
@@ -46,11 +76,13 @@ const btnClear = document.querySelector('.clear');
 btnClear.addEventListener('click', () => {
 	reset()
 })
+// Modules
 function reset() {
 	op1 = op2 = result = operator = undefined;
 	displayValue = ""
 	display.textContent = "0";
 }
+
 // Take a operation function and two numbers
 function operate(operator, a, b) {
  return operator(a, b);
