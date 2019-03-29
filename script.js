@@ -26,21 +26,22 @@ function lastOperation(op) {
 	op2 = undefined;
 	operator = undefined;
 }
+function operation(op) {
+	result = operate(operator, +op1, +op2)
+	display.textContent = result;
+	op1 = result
+	op2 = undefined;	
+}
 function operationProcess(op, a, b) {
-	
+
 }
 const btnAdd = document.querySelector('.add');
 btnAdd.addEventListener('click', () => {
 	if (operator) lastOperation(operator);
-	if (operator !== undefined) op2 = displayValue;
-	if (op1 === undefined && operator === undefined) op1 = displayValue;
-	if (operator === undefined) operator = add;
-	if (op1 !== undefined && op2 !== undefined) {
-		result = operate(operator, +op1, +op2)
-		display.textContent = result;
-		op1 = result
-		op2 = undefined;
-	}
+	if (operator) op2 = displayValue;
+	if (op1 && !operator) op1 = displayValue;
+	if (!operator) operator = add;
+	if (op1 && op2) operator(operator)
 	displayValue = "";	 
 })
 
@@ -48,17 +49,32 @@ btnAdd.addEventListener('click', () => {
 const btnSub = document.querySelector('.sub');
 btnSub.addEventListener('click', () => {
 	if (operator) lastOperation(operator);
-	if (operator !== undefined) op2 = displayValue;
-	if (op1 === undefined && operator === undefined) op1 = displayValue;
-	if (operator === undefined) operator = substract;
-	if (op1 !== undefined && op2 !== undefined) {
-		result = operate(operator, +op1, +op2)
-		display.textContent = result;
-		op1 = result
-		op2 = undefined;
-	}
+	if (operator) op2 = displayValue;
+	if (op1 === undefined && !operator) op1 = displayValue;
+	if (!operator) operator = substract;
+	if (op1 && op2) operator(operator)
 	displayValue = "";	 
 })
+
+btnMult = document.querySelector('.mult');
+btnMult.addEventListener('click', () => {
+	if (operator) lastOperation(operator);
+	if (operator) op2 = displayValue;
+	if (op1 === undefined && !operator) op1 = displayValue;
+	if (!operator) operator = multiply;
+	if (op1 && op2) operator(operator)
+	displayValue = "";	
+})
+
+btnDivd = document.querySelector('.divd');
+btnDivd.addEventListener('click', () => {
+	if (operator) lastOperation(operator);
+	if (operator) op2 = displayValue;
+	if (op1 === undefined && !operator) op1 = displayValue;
+	if (!operator) operator = divide;
+	if (op1 && op2) operator(operator)
+	displayValue = "";	
+}) 
 
 const btnEqual = document.querySelector('.equal');
 btnEqual.addEventListener('click', () => {
@@ -69,6 +85,7 @@ btnEqual.addEventListener('click', () => {
 	op2 = operator = undefined;
 	displayValue = "";
 })
+
 const btnClear = document.querySelector('.clear');
 btnClear.addEventListener('click', () => {
 	reset()
