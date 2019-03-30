@@ -44,7 +44,7 @@ function removeTransition() {
 }
 
 const display = document.querySelector('#display');
-let warning = "I'm afraid I cannot let you do that Dave..."
+const warning = document.querySelector('audio')
 let displayValue = "";
 let op1;
 let op2;
@@ -97,7 +97,9 @@ function delFunc() {
 // otherwise computes two operands
 function lastOperation(op) {
 	if (op === divide && displayValue == 0) {
-		return display.textContent = warning
+		warning.play()
+		reset();
+		return
 	}
 	result = operate(op, +op1, +displayValue)
 	display.textContent = +result.toFixed(15);
