@@ -1,3 +1,35 @@
+// Use the keyboard to manipulate the calculaor
+window.addEventListener('keydown', (e) => {
+	console.log(e.key);
+	if (Number(e.key) || e.key === "0") display.textContent = displayValue += e.key;
+	switch (e.key) {
+		case ".":
+			dotFunc();
+			break;
+		case "+":
+			operationProcess(operator, add);
+			break;
+		case "-":
+			operationProcess(operator, substract);
+			break;
+		case "*":
+			operationProcess(operator, multiply);
+			break;
+		case "/":
+			operationProcess(operator, divide);
+			break;
+		case "Backspace":
+			delFunc();
+		case "Enter":
+			equalFunc();
+			break;
+		case "c":
+			reset()
+			break;
+		default:
+			return;				
+	}	
+});
 
 // Nice looking buttons once clicked
 const buttons = document.querySelectorAll('.button');
@@ -20,6 +52,8 @@ let op2;
 let operator;
 let result; 
 
+
+
 // Create all the number buttons
 const numbers = document.querySelectorAll('.number');
 const number = numbers.forEach((number, i) => {
@@ -28,27 +62,35 @@ const number = numbers.forEach((number, i) => {
 		display.textContent = displayValue += i;
 	});
 });
+
 const dot = document.querySelector('.dot');
 dot.addEventListener('click', () => {
+	dotFunc();
+})
+
+function dotFunc() {
 	if (displayValue.includes(".")) return;
 	if (!displayValue) {
 		display.textContent = displayValue += "0.";
 	} else
 	display.textContent = displayValue += ".";
-})
+}
 
 const del = document.querySelector('.delete');
 del.addEventListener('click' , () => {
-		if (result) {
-			let lastChar = result.toString().substring(0, result.toString().length-1);
-			display.textContent = displayValue = lastChar;
-			result =  op1 = Number(lastChar);
-		} else {
-			display.textContent = displayValue = displayValue.substring(0, displayValue.length-1);
-		}
-		if (!displayValue) display.textContent = "0"	 
+	delFunc();
 })
 
+function delFunc() {
+	if (result) {
+	let lastChar = result.toString().substring(0, result.toString().length-1);
+	display.textContent = displayValue = lastChar;
+	result =  op1 = Number(lastChar);
+	} else {
+		display.textContent = displayValue = displayValue.substring(0, displayValue.length-1);
+	}
+	if (!displayValue) display.textContent = "0"	
+}
 
 // If operation includes more than two steps,  
 // operate on the last two operands and return
@@ -59,7 +101,7 @@ function lastOperation(op) {
 		return display.textContent = warning
 	}
 	result = operate(op, +op1, +displayValue)
-	display.textContent = result;
+	display.textContent = result.toFixed(15);
 	displayValue = result.toString();
 	op1 = result
 	op2 = operator = undefined;
@@ -95,10 +137,14 @@ btnDivd.addEventListener('click', () => {
 
 const btnEqual = document.querySelector('.equal');
 btnEqual.addEventListener('click', () => {
-	if (op1 === undefined || !displayValue || !operator) return;
+	equalFunc();
+})
+
+function equalFunc() {
+		if (op1 === undefined || !displayValue || !operator) return;
 	lastOperation(operator);
 	result = undefined;
-})
+}
 
 const btnClear = document.querySelector('.clear');
 btnClear.addEventListener('click', () => {
