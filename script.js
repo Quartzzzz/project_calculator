@@ -24,21 +24,29 @@ let result;
 const numbers = document.querySelectorAll('.number');
 const number = numbers.forEach((number, i) => {
 	number.addEventListener('click', () => {
-		display.textContent = displayValue += i
-		if (operator === undefined && op2 === undefined) {
-			result = op1 = undefined;
-		}
+		if (displayValue.length > 14) return;
+		display.textContent = displayValue += i;
 	});
 });
 const dot = document.querySelector('.dot');
 dot.addEventListener('click', () => {
-	if (displayValue.includes(".")) return; 
+	if (displayValue.includes(".")) return;
+	if (!displayValue) {
+		display.textContent = displayValue += "0.";
+	} else
 	display.textContent = displayValue += ".";
 })
 
 const del = document.querySelector('.delete');
 del.addEventListener('click' , () => {
-	 display.textContent = displayValue = displayValue.substring(0, displayValue.length-1);
+		if (result) {
+			let lastChar = result.toString().substring(0, result.toString().length-1);
+			display.textContent = displayValue = lastChar;
+			result =  op1 = Number(lastChar);
+		} else {
+			display.textContent = displayValue = displayValue.substring(0, displayValue.length-1);
+		}
+		if (!displayValue) display.textContent = "0"	 
 })
 
 
@@ -52,6 +60,7 @@ function lastOperation(op) {
 	}
 	result = operate(op, +op1, +displayValue)
 	display.textContent = result;
+	displayValue = result.toString();
 	op1 = result
 	op2 = operator = undefined;
 }
@@ -60,7 +69,7 @@ function lastOperation(op) {
 function operationProcess(op, newOp) {
 	if (op) lastOperation(op);
 	if (op) op2 = displayValue;
-	if (op1 === undefined && !op) op1 = displayValue;
+	if (op1 === undefined && !op || op1 !== Number(displayValue)) op1 = displayValue;
 	operator = newOp;
 	displayValue = "";
 }
@@ -86,9 +95,8 @@ btnDivd.addEventListener('click', () => {
 
 const btnEqual = document.querySelector('.equal');
 btnEqual.addEventListener('click', () => {
-	if (op2 === undefined) op2 = displayValue;
+	if (op1 === undefined || !displayValue || !operator) return;
 	lastOperation(operator);
-	displayValue = "";
 })
 
 const btnClear = document.querySelector('.clear');
@@ -102,6 +110,8 @@ function reset() {
 	displayValue = ""
 	display.textContent = "0";
 }
+
+
 
 // Take a operation function and two numbers
 function operate(op, a, b) {
