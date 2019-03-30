@@ -97,6 +97,7 @@ const btnEqual = document.querySelector('.equal');
 btnEqual.addEventListener('click', () => {
 	if (op1 === undefined || !displayValue || !operator) return;
 	lastOperation(operator);
+	result = undefined;
 })
 
 const btnClear = document.querySelector('.clear');
