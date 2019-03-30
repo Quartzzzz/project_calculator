@@ -1,7 +1,6 @@
 // Use the keyboard to manipulate the calculaor
 window.addEventListener('keydown', (e) => {
 	console.log(e.key);
-	if (Number(e.key) || e.key === "0") display.textContent = displayValue += e.key;
 	switch (e.key) {
 		case ".":
 			dotFunc();
@@ -25,10 +24,10 @@ window.addEventListener('keydown', (e) => {
 			break;
 		case "c":
 			reset()
-			break;
-		default:
-			return;				
+			break;				
 	}	
+	if (displayValue.length > 15) return;
+	if (Number(e.key) || e.key === "0") display.textContent = displayValue += e.key;
 });
 
 // Nice looking buttons once clicked
@@ -58,7 +57,7 @@ let result;
 const numbers = document.querySelectorAll('.number');
 const number = numbers.forEach((number, i) => {
 	number.addEventListener('click', () => {
-		if (displayValue.length > 14) return;
+		if (displayValue.length > 15) return;
 		display.textContent = displayValue += i;
 	});
 });
