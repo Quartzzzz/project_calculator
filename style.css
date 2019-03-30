@@ -22,6 +22,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	font-family: 'Gill sans';
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -49,26 +50,29 @@ table {
 
 /* MY CSS */
 .calculator {
-	background-color: grey;	
+	background-color: black;	
 	display: grid;
 	grid-template-columns: repeat(4, 60px);
+	grid-template-rows: repeat(6, 60px);
 	grid-gap: 1px;
 	width: 243px;
-	height: 340px;
+	height: 386px;
 	box-sizing: border-box;
-	margin: auto;
-  margin-top: 15vh;
+	margin: 15vh auto auto 37%;
 }
 .display {
 	text-align: right;
 	grid-column: 1 / 5;
   grid-row: 1;
+  font-size: 1.5em;
+  color: white;
 }
 .button	{
-	background: white;
+	background: #901000;
 	transition: all .01s;
 	text-align: center;
-	vertical-align: center;
+	padding: 33%;
+	color: white;
 }
 .clicked {
 	transform: scale(1:1);
@@ -83,6 +87,9 @@ table {
   grid-row: 5;
 }
 
+.operator, .number {
+	font-size: 20px;
+}
 .add {
 	grid-column: 4;
 	grid-row: 2;
@@ -106,15 +113,32 @@ table {
 .equal {
 	grid-row: 6;
 	grid-column: 1 / 3;
+	padding: 17%;
 }
 
 .clear {
 	grid-row: 6;
+	padding-left: 34%;
 }
 
 .dot {
 	grid-column: 2;
   grid-row: 5;
+}
+
+.tag {
+	padding-top: 22%;
+  padding-left: 23%;
+  font-weight: lighter;
+  font-size: 17px;
+  border-bottom: 1px solid white;
+  color: rgba(121,121,121,1);
+  background: rgba(255,255,255,0.84);
+}
+
+.delete {
+	padding-left: 28%;
+  padding-top: 36%;
 }
 
 
