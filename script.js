@@ -101,7 +101,7 @@ function lastOperation(op) {
 		return display.textContent = warning
 	}
 	result = operate(op, +op1, +displayValue)
-	display.textContent = result.toFixed(15);
+	display.textContent = +result.toFixed(15);
 	displayValue = result.toString();
 	op1 = result
 	op2 = operator = undefined;
