@@ -46,9 +46,27 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+
 }
 
 /* MY CSS */
+body {
+	background: #381503;
+}
+.title {
+	text-align: center;
+	padding-top: 2em;
+	padding-right: 2em;
+	color: white;
+}
+h1 {
+	font-size: 3em;
+}
+h2 {
+	font-size: 1.2em;
+	padding-top: 1em;
+	font-weight: lighter;
+}
 .calculator {
 	background-color: black;	
 	display: grid;
@@ -58,14 +76,14 @@ table {
 	width: 243px;
 	height: 386px;
 	box-sizing: border-box;
-	margin: 15vh auto auto 37%;
+	margin: 8vh auto auto 39%;
 }
 .display {
 	text-align: right;
 	grid-column: 1 / 5;
   grid-row: 1;
   font-size: 1.5em;
-  color: white;
+  color: white
 }
 .button	{
 	background: #901000;
