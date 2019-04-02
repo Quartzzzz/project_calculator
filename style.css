@@ -87,18 +87,16 @@ h2 {
 }
 .button	{
 	background: #901000;
-	transition: all .01s;
+	transition: all .05s;
 	text-align: center;
 	padding: 33%;
 	color: white;
 }
 .clicked {
-	transform: scale(1:1);
-	box-shadow: 0 0 10px grey;
-	background: grey;
+	transform: scale(0.95);
 }
 .button:hover {
-	background: grey;
+	background: #b7270f;
 }
 .zero {
 	grid-column: 1;
