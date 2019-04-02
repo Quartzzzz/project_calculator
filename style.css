@@ -53,10 +53,13 @@ table {
 body {
 	background: #381503;
 }
+.wrapper {
+	width: 50%;
+	margin: auto;
+}
 .title {
 	text-align: center;
 	padding-top: 2em;
-	padding-right: 2em;
 	color: white;
 }
 h1 {
@@ -74,9 +77,8 @@ h2 {
 	grid-template-rows: repeat(6, 60px);
 	grid-gap: 1px;
 	width: 243px;
-	height: 386px;
 	box-sizing: border-box;
-	margin: 8vh auto auto 39%;
+	margin: 8vh auto;
 }
 .display {
 	text-align: right;
