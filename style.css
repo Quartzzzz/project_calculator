@@ -2,7 +2,14 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
+@font-face {
+	font-family: Microgramma;
+	src: url("Microgramma_D_Extended_Bold.otf");
+}
+@font-face {
+	font-family: Microgramma-Medium;
+	src: url("Microgramma_D_Extended_Medium.otf");
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -22,7 +29,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-	font-family: 'Gill sans';
+
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -30,7 +37,8 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
+	line-height: 1;	
+	font-family: 'Microgramma-Medium';
 }
 ol, ul {
 	list-style: none;
@@ -59,26 +67,27 @@ body {
 }
 .title {
 	text-align: center;
-	padding-top: 2em;
+	padding-top: 4em;
 	color: white;
+	font-family: 'Microgramma';
 }
 h1 {
 	font-size: 3em;
 }
 h2 {
-	font-size: 1.2em;
+	font-size: 1em;
 	padding-top: 1em;
-	font-weight: lighter;
+	font-family: 'Microgramma-Medium';
 }
 .calculator {
 	background-color: black;	
 	display: grid;
-	grid-template-columns: repeat(4, 60px);
-	grid-template-rows: repeat(6, 60px);
+	grid-template-columns: repeat(4, 80px);
+	grid-template-rows: repeat(6, 80px);
 	grid-gap: 1px;
-	width: 243px;
+	width: 323px;
 	box-sizing: border-box;
-	margin: 8vh auto;
+	margin: 6vh auto;
 }
 .display {
 	text-align: right;
@@ -145,8 +154,9 @@ h2 {
 }
 
 .tag {
-	padding-top: 22%;
-  padding-left: 23%;
+	text-align: center;
+	padding-top: 26%;
+  padding-left: 3%;
   font-weight: lighter;
   font-size: 17px;
   border-bottom: 1px solid white;
@@ -157,6 +167,8 @@ h2 {
 .delete {
 	padding-left: 28%;
   padding-top: 36%;
+  grid-column: 3;
+  grid-row: 5;
 }
 
 
